@@ -1,3 +1,10 @@
+# Hailo.pm - Hailo AI interface for Keldair
+# Copyright 2011 Alexandria M. Wolcott <alyx@sporksmoo.net>
+# Licensed under the same terms as Perl itself.
+
+# modreq: Hailo
+# modconf: "ai" : { "wait" : 5, },
+
 package Keldair::Hailo;
 
 use strict;
