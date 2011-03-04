@@ -1,0 +1,32 @@
+package Keldair::Hailo;
+
+use strict;
+use warnings;
+use Keldair;
+use Hailo;
+
+my $lines = 0;
+my $hailo = Hailo->new;
+
+$keldair->hook_add(OnMessage => sub {
+		my ($chan, $nick, @msg) = @_;
+		my $msg = join(/ /,@msg);
+		$lines++;
+		$hailo->learn($msg);
+		if ($line => $keldair->config('ai/wait')) {
+			$keldair->msg($chan,$hailo->reply);
+		}
+	}
+);
+
+$keldair->command_bind(CHAT => sub {
+		my ($chan, $nick, @msg) = @_;
+		if (!@msg) {
+			$keldair->msg($chan,$hailo->reply);
+		}
+		else {
+			my $msg = split(/ /,@msg);
+			$keldair->msg($chan,$hailo->reply($msg));
+		}
+	}
+);
