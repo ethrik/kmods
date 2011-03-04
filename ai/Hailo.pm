@@ -17,10 +17,10 @@ my $hailo = Hailo->new;
 
 $keldair->hook_add(OnMessage => sub {
 		my ($chan, $nick, @msg) = @_;
-		my $msg = join(/ /,@msg);
+		my $msg = join(' ',@msg);
 		$lines++;
 		$hailo->learn($msg);
-		if ($line => $keldair->config('ai/wait')) {
+		if ($lines >= $keldair->config('ai/wait')) {
 			$keldair->msg($chan,$hailo->reply);
 		}
 	}
@@ -32,7 +32,7 @@ $keldair->command_bind(CHAT => sub {
 			$keldair->msg($chan,$hailo->reply);
 		}
 		else {
-			my $msg = split(/ /,@msg);
+			my $msg = split(' ',@msg);
 			$keldair->msg($chan,$hailo->reply($msg));
 		}
 	}
