@@ -14,8 +14,8 @@ use Acme::LOLCAT;
 $keldair->command_bind(
     LOLCAT => sub {
         my ( $chan, $nick, @msg ) = @_;
-        my $line = join( ' ', $msg );
+        my $line = join( ' ', @msg );
         my $lol = translate($line);
-        $keldair->msg( $chan, $line );
+        $keldair->msg( $chan, $lol );
     }
 );
