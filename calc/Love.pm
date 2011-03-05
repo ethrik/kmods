@@ -14,10 +14,6 @@ use Love::Match::Calc;
 $keldair->command_bind(
     LOVE => sub {
         my ( $chan, $nick, @names ) = @_;
-        if ( $#names != 2 ) {
-            $keldair->msg( $chan,
-                "Incorrect parameters. LOVE requires exactly two names." );
-        }
         my $m = lovematch( $names[0], $names[1] );
         $keldair->msg( $chan, "Lovematch for $names[0] and $names[1] is $m%" );
     }
