@@ -5,7 +5,7 @@
 # modreq: Hailo,Acme::Llama
 # modconf: "ai" : { "wait" : 5, },
 
-package Keldair::Hailo;
+package Keldair::Module::Hailo;
 
 use strict;
 use warnings;
