@@ -2,7 +2,7 @@
 # Copyright 2011 Alexandria M. Wolcott <alyx@sporksmoo.net>
 # Licensed under the same terms as Perl itself.
 
-# modreq: Hailo Acme::Llama
+# modreq: Hailo,Acme::Llama
 # modconf: "ai" : { "wait" : 5, },
 
 package Keldair::Hailo;
