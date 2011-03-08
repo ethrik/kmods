@@ -4,9 +4,10 @@
 
 package Keldair::Module::IMDB;
 
+# modreq: IMDB::Film
+
 use strict;
 use warnings;
-use URI::Escape;
 use IMDB::Film;
 use Keldair;
 
