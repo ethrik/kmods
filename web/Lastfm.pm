@@ -22,19 +22,22 @@ $keldair->command_bind($_ => \&lastfm) foreach qw( NP LASTFM NOWPLAYING );
 
 sub lastfm {
     my ( $chan, $origin, @parv ) = @_;
-    my $data = $lastfm->request_signed(
-        method => 'user.getRecentTracks',
-        user   => $parv[0],
-        limit  => 1
-    );
-    my ($artist, $song);
-    if (ref($data->{recenttracks}->{track}) eq 'HASH') {
-        $artist = $data->{recenttracks}->{track}->{artist}->{'#text'};
-        $song = $data->{recenttracks}->{track}->{name};
+    my $data;  
+    eval { $data = $lastfm->request_signed(
+            method => 'user.getRecentTracks',
+            user   => $parv[0],
+            limit  => 1
+        ) } or $keldair->msg($chan, 'LastFM: This user does not exist.') and my $nouser = 1;
+    if ($nouser) {
+        my ($artist, $song);
+        if (ref($data->{recenttracks}->{track}) eq 'HASH') {
+            $artist = $data->{recenttracks}->{track}->{artist}->{'#text'};
+            $song = $data->{recenttracks}->{track}->{name};
+        }
+        elsif (ref($data->{recenttracks}->{track}) eq 'ARRAY') {
+            $artist = $data->{recenttracks}->{track}->[0]->{artist}->{'#text'};
+            $song = $data->{recenttracks}->{track}->[0]->{name};
+        }
+        $keldair->msg($chan, "$parv[0] is now playing: $artist - $song");
     }
-    elsif (ref($data->{recenttracks}->{track}) eq 'ARRAY') {
-        $artist = $data->{recenttracks}->{track}->[0]->{artist}->{'#text'};
-        $song = $data->{recenttracks}->{track}->[0]->{name};
-    }
-    $keldair->msg($chan, "$parv[0] is now playing: $artist - $song");
 }
