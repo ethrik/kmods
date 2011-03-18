@@ -11,6 +11,9 @@ use warnings;
 use Keldair;
 use Love::Match::Calc;
 
+$keldair->help_add(LOVE => 'Calculates the love between two names');
+$keldair->syntax_add(LOVE => 'LOVE <name 1> <name 2>');
+
 $keldair->command_bind(
     LOVE => sub {
         my ( $chan, $nick, @names ) = @_;

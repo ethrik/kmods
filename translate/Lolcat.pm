@@ -11,6 +11,9 @@ use warnings;
 use Keldair;
 use Acme::LOLCAT;
 
+$keldair->help_add(LOLCAT => 'Translates English into LOLCAT.');
+$keldair->syntax_add(LOLCAT => 'LOLCAT <content to translate>');
+
 $keldair->command_bind(
     LOLCAT => sub {
         my ( $chan, $nick, @msg ) = @_;

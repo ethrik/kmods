@@ -10,6 +10,9 @@ use Keldair;
 use Net::Whois::IANA;
 use Regexp::Common qw/net/;
 
+$keldair->help_add(IPINFO => 'Gives basic information about an IP address.');
+$keldair->syntax_add(IPINFO => 'IPINFO <IPv4 IP address>');
+
 $keldair->command_bind(IPINFO =>
     sub {
         my ( $channel, $origin, @parv ) = @_;

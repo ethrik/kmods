@@ -11,6 +11,9 @@ use warnings;
 use IMDB::Film;
 use Keldair;
 
+$keldair->help_add(IMDB => 'Searches IMDB for film information.');
+$keldair->syntax_add(IMDB => 'IMDB <search terms>');
+
 $keldair->command_bind(IMDB => sub {
         my ( $chan, $nick, @parv ) = @_;
         my $query = join(' ', @parv);

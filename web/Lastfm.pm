@@ -12,6 +12,10 @@ use warnings;
 use Net::LastFM;
 use Keldair;
 
+foreach my $cmd qw( NP LASTFM NOWPLAYING ) {
+    $keldair->help_add($cmd => 'Shows the current song played by the user, according to Last.fm');
+    $keldair->syntax_add($cmd => "$cmd <last.fm username>");
+}
 
 my $lastfm = Net::LastFM->new(
     api_key    =>  $keldair->config('lastfm/key'),

@@ -11,6 +11,9 @@ use Keldair;
 
 my $speller = Text::Aspell->new;
 
+$keldair->help_add(SPELL => 'Checks the spelling of a word, and offers possible corrections.');
+$keldair->syntax_add(SPELL => 'SPELL <word>');
+
 $keldair->command_bind(SPELL => sub {
         my ( $chan, $nick, @argc ) = @_;
         my @suggestions = $speller->suggest($argc[0]);

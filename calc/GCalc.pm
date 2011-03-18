@@ -11,6 +11,9 @@ use WWW::Google::Calculator;
 
 my $calc = WWW::Google::Calculator->new;
 
+$keldair->help_add(CALC => 'Calculates a given mathmatical formula.');
+$keldair->syntax_add(CALC => 'CALC <formula>');
+
 $keldair->command_bind(CALC => 
     sub {
         my ( $chan, $origin, @parv ) = @_;
