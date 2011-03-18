@@ -14,11 +14,12 @@ use Love::Match::Calc;
 $keldair->command_bind(
     LOVE => sub {
         my ( $chan, $nick, @names ) = @_;
-        my $number = $names[0] + 1;
-        if ($names[1] == $number) { $keldair->msg( $chan, 'Love: Try some different params.' ); }
+        if (($names[0] =~ m/^\d+$/) && ($names[1] =~ m/^\d+$/) && ($names[1] == $names[0] + 1)) {
+            $keldair->msg( $chan, 'Love: Try some different params.' );
+        }
         else {
             my $m = lovematch( $names[0], $names[1] );
-            $keldair->msg( $chan, "Lovematch for $names[0] and $names[1] is $m%" );
+            $keldair->msg( $chan, "Lovematch for $names[0] and $names[1] is $m\%" );
         }
     }
 );
