@@ -16,9 +16,9 @@ $keldair->syntax_add(LOLCAT => 'LOLCAT <content to translate>');
 
 $keldair->command_bind(
     LOLCAT => sub {
-        my ( $chan, $nick, @msg ) = @_;
+        my ( $network, $chan, $nick, @msg ) = @_;
         my $line = join( ' ', @msg );
         my $lol = translate($line);
-        $keldair->msg( $chan, $lol );
+        $keldair->msg( $network, $chan, $lol );
     }
 );

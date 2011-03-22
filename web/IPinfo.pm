@@ -15,16 +15,16 @@ $keldair->syntax_add(IPINFO => 'IPINFO <IPv4 IP address>');
 
 $keldair->command_bind(IPINFO =>
     sub {
-        my ( $channel, $origin, @parv ) = @_;
+        my ( $network, $channel, $origin, @parv ) = @_;
         my $ip = $parv[0];
         if ($ip =~ /^$RE{net}{IPv4}$/) {
             my $iana = Net::Whois::IANA->new;
             $iana->whois_query( -ip => $ip );
-            $keldair->msg( $channel, 'Info for %s: Country: %s; Netname: %s; Descr: %s; Status: %s; Source: %s; Inetnum: %s; CIDR: %s',
+            $keldair->msg( $network, $channel, 'Info for %s: Country: %s; Netname: %s; Descr: %s; Status: %s; Source: %s; Inetnum: %s; CIDR: %s',
                 $ip, $iana->country, $iana->netname, $iana->descr, $iana->status, $iana->source, $iana->server, $iana->cidr->[0] );
         }
         else {
-            $keldair->msg( $channel, 'The address %s is not valid.', $ip );
+            $keldair->msg( $network, $channel, 'The address %s is not valid.', $ip );
         }
     }
 );

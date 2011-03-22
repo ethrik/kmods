@@ -16,13 +16,13 @@ $keldair->syntax_add(LOVE => 'LOVE <name 1> <name 2>');
 
 $keldair->command_bind(
     LOVE => sub {
-        my ( $chan, $nick, @names ) = @_;
+        my ( $network, $chan, $nick, @names ) = @_;
         if (($names[0] =~ m/^\d+$/) && ($names[1] =~ m/^\d+$/) && ($names[1] == $names[0] + 1)) {
-            $keldair->msg( $chan, 'Love: Try some different params.' );
+            $keldair->msg( $network, $chan, 'Love: Try some different params.' );
         }
         else {
             my $m = lovematch( $names[0], $names[1] );
-            $keldair->msg( $chan, "Lovematch for $names[0] and $names[1] is $m\%" );
+            $keldair->msg( $network, $chan, "Lovematch for $names[0] and $names[1] is $m\%" );
         }
     }
 );

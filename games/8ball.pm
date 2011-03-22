@@ -34,8 +34,8 @@ $keldair->help_add('8BALL' => 'Gives results from a magic 8ball.');
 $keldair->syntax_add('8BALL' => '8BALL <question>');
 
 $keldair->command_bind('8BALL' => sub {
-        my ( $chan, $nick, @msg) = @_;
-        $keldair->msg( $chan, $responses[int(rand(scalar @responses))] );
+        my ( $network, $chan, $nick, @msg) = @_;
+        $keldair->msg( $network, $chan, $responses[int(rand(scalar @responses))] );
     }
 );
 

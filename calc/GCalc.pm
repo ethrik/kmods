@@ -16,9 +16,9 @@ $keldair->syntax_add(CALC => 'CALC <formula>');
 
 $keldair->command_bind(CALC => 
     sub {
-        my ( $chan, $origin, @parv ) = @_;
+        my ( $network, $chan, $origin, @parv ) = @_;
         my $string = join(' ', @parv );
-        $keldair->msg( $chan, $calc->calc($string) );
+        $keldair->msg( $network, $chan, $calc->calc($string) );
     }
 );
 

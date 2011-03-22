@@ -16,10 +16,10 @@ $keldair->syntax_add(BF => 'BF <code>');
 
 $keldair->command_bind(BF => 
     sub {
-        my ( $chan, $nick, @msg ) = @_;
+        my ( $network, $chan, $nick, @msg ) = @_;
         my $bf = Language::BF->new($msg[0]);
         $bf->run;
-        $keldair->msg($chan, $bf->output);
+        $keldair->msg($network, $chan, $bf->output);
     }
 );
 
