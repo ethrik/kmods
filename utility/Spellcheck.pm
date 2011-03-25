@@ -15,10 +15,10 @@ $keldair->help_add(SPELL => 'Checks the spelling of a word, and offers possible 
 $keldair->syntax_add(SPELL => 'SPELL <word>');
 
 $keldair->command_bind(SPELL => sub {
-        my ( $network, $chan, $nick, @argc ) = @_;
-        my @suggestions = $speller->suggest($argc[0]);
+        my ( $network, $chan, $nick, $string ) = @_;
+        my @suggestions = $speller->suggest($string);
         my $list = join(' ',@suggestions);
-        $keldair->msg($network, $chan,"$#suggestions suggestion(s) for $argc[0]: $list");
+        $keldair->msg($network, $chan,"$#suggestions suggestion(s) for $string: $list");
     }
 );
 

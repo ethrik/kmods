@@ -16,8 +16,8 @@ $keldair->syntax_add(BF => 'BF <code>');
 
 $keldair->command_bind(BF => 
     sub {
-        my ( $network, $chan, $nick, @msg ) = @_;
-        my $bf = Language::BF->new($msg[0]);
+        my ( $network, $chan, $nick, $string ) = @_;
+        my $bf = Language::BF->new($string);
         $bf->run;
         $keldair->msg($network, $chan, $bf->output);
     }

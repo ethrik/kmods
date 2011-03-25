@@ -16,7 +16,8 @@ $keldair->syntax_add(LOVE => 'LOVE <name 1> <name 2>');
 
 $keldair->command_bind(
     LOVE => sub {
-        my ( $network, $chan, $nick, @names ) = @_;
+        my ( $network, $chan, $nick, $string ) = @_;
+        my @names = split(' ', $string);
         if (($names[0] =~ m/^\d+$/) && ($names[1] =~ m/^\d+$/) && ($names[1] == $names[0] + 1)) {
             $keldair->msg( $network, $chan, 'Love: Try some different params.' );
         }

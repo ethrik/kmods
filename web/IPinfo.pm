@@ -15,7 +15,8 @@ $keldair->syntax_add(IPINFO => 'IPINFO <IPv4 IP address>');
 
 $keldair->command_bind(IPINFO =>
     sub {
-        my ( $network, $channel, $origin, @parv ) = @_;
+        my ( $network, $channel, $origin, $string ) = @_;
+        my @parv = split(' ', $string);
         my $ip = $parv[0];
         if ($ip =~ /^$RE{net}{IPv4}$/) {
             my $iana = Net::Whois::IANA->new;

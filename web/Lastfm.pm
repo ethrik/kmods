@@ -25,14 +25,15 @@ my $lastfm = Net::LastFM->new(
 $keldair->command_bind($_ => \&lastfm) foreach qw( NP LASTFM NOWPLAYING );
 
 sub lastfm {
-    my ( $network, $chan, $origin, @parv ) = @_;
+    my ( $network, $chan, $origin, $string ) = @_;
+    my @parv = split(' ', $string);
     my $data;  
     eval { $data = $lastfm->request_signed(
             method => 'user.getRecentTracks',
             user   => $parv[0],
             limit  => 1
         ) } or $keldair->msg($network, $chan, 'LastFM: This user does not exist.') and my $nouser = 1;
-    if (!$nouser) {
+    if ($nouser) {
         my ($artist, $song);
         if (ref($data->{recenttracks}->{track}) eq 'HASH') {
             $artist = $data->{recenttracks}->{track}->{artist}->{'#text'};
