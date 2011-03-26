@@ -19,8 +19,15 @@ $keldair->command_bind(STATS =>
         $keldair->msg($network, $channel, 'Uptime: %d days, %d:%02d:%02d', 
             $uptime / 86400, ($uptime / 3600) % 24, ($uptime / 60) % 60,
             $uptime % 60);
-        $keldair->msg($network, $channel, 'Recieved: %s (%.1f B/s)',
+        $keldair->msg($network, $channel, 'Recieved (Global): %s (%.1f B/s)',
             size($Keldair::State::STATS{'inB'}), ($Keldair::State::STATS{'inB'} / $uptime));
+        $keldair->msg($network, $channel, 'Recieved (%s): %s (%.1f B/s)',
+            $network, size($Keldair::State::STATS{$network}{'inB'}), ($Keldair::State::STATS{$network}{'inB'} / $uptime));
+        $keldair->msg($network, $channel, 'Sent (Global): %s (%.1f B/s)',
+            size($Keldair::State::STATS{'outB'}), ($Keldair::State::STATS{'outB'} / $uptime));
+        $keldair->msg($network, $channel, 'Sent (%s): %s (%.1f B/s)',
+            $network, size($Keldair::State::STATS{$network}{'outB'}), ($Keldair::State::STATS{$network}{'outB'} / $uptime));
+
     }
 );
 
