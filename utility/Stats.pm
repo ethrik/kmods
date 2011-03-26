@@ -34,19 +34,22 @@ sub size {
 
     # TiB: 2^40 = 1099511627776
     if ($bytes > 2**40) {
-        return sprintf('%.2f Tebibytes', ($bytes / 2**40));
+        return sprintf('%.2f Terabytes', ($bytes / 2**40));
     }
     # GiB: 2^30 = 1073741824
     elsif ($bytes > 2**30) {
-        return sprintf('%.2f Gibibytes', ($bytes / 2**30));
+        return sprintf('%.2f Gigabytes', ($bytes / 2**30));
     }
     # MiB: 2^20 = 1048576
     elsif ($bytes > 2**20) {
-        return sprintf('%.2f Mebibytes', ($bytes / 2**20));
+        return sprintf('%.2f Megabytes', ($bytes / 2**20));
     }
     # KiB: 2^10 = 1024
+    elsif ($bytes > 2**10) {
+        return sprintf('%.2f Kilobytes', ($bytes / 2**10));
+    }
     else {
-        return sprintf('%.2f Kibibytes', ($bytes / 2**10));
+        return sprintf('%.2f Bytes', ($bytes));
     }
 }
 
