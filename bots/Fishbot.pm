@@ -12,6 +12,8 @@ use Keldair;
 $keldair->hook_add(OnMessage => sub {
         my ( $network, $channel, $origin, $line ) = @_;
         given (lc($line)) {
+            my $channel = $keldair->find_chan($channel);
+            my $origin = $keldair->find_user($origin);
             when (/hampster/) { $keldair->msg( $network, $channel, '%s: There is no \'p\' in hamster you retard.', $origin->nick); }
             when ('ag') { $keldair->msg( $network, $channel, 'Ag, ag ag ag ag ag AG AG AG!' ); }
             when (/vinegar/) { $keldair->msg( $network, $channel, 'Nope, too sober for vinegar.  Try later.' ); }
