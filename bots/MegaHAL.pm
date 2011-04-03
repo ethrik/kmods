@@ -54,6 +54,7 @@ sub cmd_learn {
         my $res = $furl->get($url);
         $keldair->msg( $network, $channel, $res->status_line) unless $res->is_success;
         my @content = split("\n", $res->content);
+        $Keldair::State::STATS{'inB'} += length($res->content);
         foreach my $data (@content) {
             $hal->learn($data);
         }
