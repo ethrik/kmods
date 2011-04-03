@@ -39,7 +39,7 @@ $keldair->hook_add(OnMessage => sub {
             when ('kangaroo') { $keldair->msg( $network, $channel, 'The kangaroo is a four winged stinging insect.' ); }
             when (/\001ACTION slaps (.*) around a bit with a large trout/) { $keldair->msg( $network, $channel, 'trouted!' ); }
             when ('sea bass') { $keldair->msg( $network, $channel, 'Beware of the mutant sea bass and their laser cannons!' ); }
-            when ('trout') { $keldair->msg ( $channel, 'Trout are freshwater fish and have underwater weapons.' ); }
+            when ('trout') { $keldair->msg ( $network, $channel, 'Trout are freshwater fish and have underwater weapons.' ); }
             when (/has returned from playing/i) { $keldair->msg( $network, $channel, 'like we care fs :(' ); }
             when ('where are we?') { $keldair->msg( $network, $channel, 'Last time I looked, we were in %s.', $channel->name ); }
             when ('where do you want to go today?') { $keldair->msg( $network, $channel, 'anywhere but redmond :(.' ); }
