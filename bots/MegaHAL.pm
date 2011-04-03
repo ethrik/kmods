@@ -2,7 +2,7 @@
 # Copyright 2011 Alexandria Wolcott <alyx@sporksmoo.net>
 # Released under the same terms as Perl itself.
 
-# modreq: AI::MegaHAL
+# modreq: AI::MegaHAL,Furl
 
 use strict;
 use warnings;
@@ -10,6 +10,7 @@ use warnings;
 package Keldair::Module::MegaHAL;
 
 use AI::MegaHAL;
+use Furl;
 use Keldair;
 
 my $hal = AI::MegaHAL->new(Path => './', Banner => 0, Prompt => 0, Wrap => 0, AutoSave => 1);
@@ -19,6 +20,7 @@ my $lines = 0;
 
 $keldair->hook_add(OnMessage => \&handle_message);
 $keldair->command_bind(CHAT => \&cmd_chat);
+$keldair->command_bind(LEARN => \&cmd_learn);
 
 sub handle_message {
     my ( $network, $channel, $origin, $message ) = @_;
@@ -40,3 +42,22 @@ sub cmd_chat {
     print "$tosend\n";
     $keldair->msg($network, $channel, $tosend);
 }
+
+sub cmd_learn {
+    my ( $network, $channel, $origin, $content ) = @_;
+    my $furl = Furl->new(
+        agent => "Keldair/$Keldair::VERSION",
+        timeout => 10
+    );
+    my @urls = split(' ', $content);
+    foreach my $url (@urls) { 
+        my $res = $furl->get($url);
+        $keldair->msg( $network, $channel, $res->status_line) unless $res->is_success;
+        my @content = split("\n", $res->content);
+        foreach my $data (@content) {
+            $hal->learn($data);
+        }
+        $keldair->msg( $network, $channel, "MegaHAL: Learned $url" );
+    }
+}
+
