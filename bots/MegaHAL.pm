@@ -30,6 +30,7 @@ sub handle_message {
     print "MegaHAL lines: $lines\n";
     if ($lines == $replylines) {
         my $tosend = $hal->do_reply($message);
+        if ($channel =~ /^(#|&|!)/) { $channel = $keldair->find_chan($channel); }
         $keldair->msg( $network, $channel, $tosend );
         $lines = 0;
         $replylines = int(rand($maxlines));
