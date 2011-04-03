@@ -52,6 +52,7 @@ sub cmd_learn {
     );
     my @urls = split(' ', $content);
     foreach my $url (@urls) { 
+        next if ($url !~ /^http(s)?:/i);
         my $res = $furl->get($url);
         $keldair->msg( $network, $channel, $res->status_line) unless $res->is_success;
         my @content = split("\n", $res->content);
