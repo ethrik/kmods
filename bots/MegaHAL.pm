@@ -12,6 +12,7 @@ package Keldair::Module::MegaHAL;
 use AI::MegaHAL;
 use Furl;
 use Keldair;
+use Keldair::State;
 
 my $hal = AI::MegaHAL->new(Path => './', Banner => 0, Prompt => 0, Wrap => 0, AutoSave => 1);
 my $maxlines = $keldair->config('ai/maxlines');
