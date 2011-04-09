@@ -33,7 +33,7 @@ sub cmd_nickometer {
         $percentage .= '%';
     }
 
-    $keldair->msg( $network, $channel,  "'$term' is $percentage lame",  );
+    $keldair->msg( $network, $channel, '%s', "'$term' is $percentage lame" );
 }
 
 sub percentage {
