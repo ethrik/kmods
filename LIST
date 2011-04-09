@@ -5,8 +5,10 @@ calc/GCalc
 calc/Love
 eval/Brainfuck
 games/8ball
+games/Nickometer
 search/IMDB
 translate/Lolcat
+utility/Case
 utility/Spellcheck
 utility/Stats
 web/IPinfo
