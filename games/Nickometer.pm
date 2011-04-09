@@ -18,9 +18,8 @@ $keldair->command_bind(NICKOMETER => \&cmd_nickometer);
 
 sub cmd_nickometer { 
     my ( $network, $channel, $origin, $term ) = @_;
-
+    $term = $origin->nick if (!$term);
     $term =~ s/^ //;
-    $term = $origin->nick if (lc($term) eq 'me');
     
     my $percentage = percentage($term);
 
