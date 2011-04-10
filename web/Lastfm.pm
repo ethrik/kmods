@@ -33,7 +33,7 @@ sub lastfm {
             user   => $parv[0],
             limit  => 1
         ) } or $keldair->msg($network, $chan, 'LastFM: This user does not exist.') and my $nouser = 1;
-    if ($nouser) {
+    if (!$nouser) {
         my ($artist, $song);
         if (ref($data->{recenttracks}->{track}) eq 'HASH') {
             $artist = $data->{recenttracks}->{track}->{artist}->{'#text'};
