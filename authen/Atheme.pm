@@ -2,6 +2,8 @@
 # Copyright 2011 Alexandria M. Wolcott <alyx@sporksmoo.net>
 # Released under the same terms at Perl itself.
 
+# modreq: Authen::Simple::Atheme
+
 use strict;
 use warnings;
 package Keldair::Module::Authen::Atheme;
