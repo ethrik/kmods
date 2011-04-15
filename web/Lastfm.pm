@@ -5,7 +5,7 @@
 # modreq: Net::LastFM
 # modconf: "lastfm" { "api" : "", "secret" : "" },
 
-package Keldair::Module::Lastfm;
+package Keldair::Module::Web::Lastfm;
 
 use strict;
 use warnings;

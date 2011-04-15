@@ -4,7 +4,7 @@
 
 # modreq: Love::Match::Calc
 
-package Keldair::Module::Love;
+package Keldair::Module::Calc::Love;
 
 use strict;
 use warnings;

@@ -5,7 +5,7 @@
 use strict;
 use warnings;
 
-package Keldair::Module::Plumber;
+package Keldair::Module::Bots::Plumber;
 
 use Keldair;
 use Keldair::State;

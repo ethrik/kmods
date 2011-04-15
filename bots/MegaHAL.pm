@@ -7,7 +7,7 @@
 use strict;
 use warnings;
 
-package Keldair::Module::MegaHAL;
+package Keldair::Module::Bots::MegaHAL;
 
 use AI::MegaHAL;
 use Furl;

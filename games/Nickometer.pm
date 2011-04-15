@@ -7,7 +7,7 @@
 
 use warnings;
 use strict;
-package Keldair::Module::Nickometer;
+package Keldair::Module::Games::Nickometer;
 use Keldair;
 
 use Math::Trig;

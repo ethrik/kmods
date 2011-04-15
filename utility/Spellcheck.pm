@@ -4,6 +4,8 @@
 
 # modreq: Text::Aspell
 
+package Keldair::Module::Utility::Spellcheck;
+
 use strict;
 use warnings;
 use Text::Aspell;

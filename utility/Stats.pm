@@ -6,7 +6,7 @@
 use strict;
 use warnings;
 
-package Keldair::Module::Stats;
+package Keldair::Module::Utility::Stats;
 
 use Keldair;
 

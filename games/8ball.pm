@@ -2,7 +2,7 @@
 # Copyright 2011 Alexandria M. Wolcott <alyx@sporksmoo.net>
 # Licensed under the same terms as Perl itself.
 
-package Keldair::Module::8ball;
+package Keldair::Module::Games::8ball;
 
 use strict;
 use warnings;

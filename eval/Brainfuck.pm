@@ -6,7 +6,7 @@
 
 use strict;
 use warnings;
-package Keldair::Module::Brainfuck;
+package Keldair::Module::Eval::Brainfuck;
 
 use Language::BF;
 use Keldair;

@@ -4,6 +4,8 @@
 
 # modreq: WWW::Google::Calculator
 
+package Keldair::Module::Calc::Google;
+
 use strict;
 use warnings;
 use Keldair;

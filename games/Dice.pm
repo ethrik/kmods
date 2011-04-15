@@ -7,7 +7,7 @@
 use warnings;
 use strict;
 
-package Keldair::Module::Dice;
+package Keldair::Module::Games::Dice;
 
 use Keldair;
 foreach (qw/ DICE ROLL/) {

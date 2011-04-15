@@ -2,7 +2,7 @@
 # Copyright 2011 Alexandria M. Wolcott <alyx@sporksmoo.net>
 # Released under the same terms as Perl itself.
 
-package Keldair::Module::Fishbot;
+package Keldair::Module::Bots::Fishbot;
 
 use strict;
 use warnings;

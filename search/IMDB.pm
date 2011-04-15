@@ -2,7 +2,7 @@
 # Copyright 2011 Alexandria M. Wolcott <alyx@sporksmoo.net>
 # Released under the same terms as Perl itself.
 
-package Keldair::Module::IMDB;
+package Keldair::Module::Search::IMDB;
 
 # modreq: IMDB::Film
 

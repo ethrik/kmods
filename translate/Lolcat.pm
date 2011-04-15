@@ -4,7 +4,7 @@
 
 # modreq: Acme::LOLCAT
 
-package Keldair::Module::Lolcat;
+package Keldair::Module::Translate::Lolcat;
 
 use strict;
 use warnings;

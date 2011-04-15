@@ -4,6 +4,8 @@
 
 # modreq: Net::Whois::IANA,Regexp::Common
 
+package Keldair::Module::Web::IPinfo;
+
 use strict;
 use warnings;
 use Keldair;
