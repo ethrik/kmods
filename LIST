@@ -1,7 +1,7 @@
 bots/Fishbot
 bots/MegaHAL
 bots/Plumber
-calc/GCalc
+calc/Google
 calc/Love
 eval/Brainfuck
 games/8ball
@@ -9,8 +9,8 @@ games/Dice
 games/Nickometer
 search/IMDB
 translate/Lolcat
-utility/Case
 utility/Spellcheck
 utility/Stats
+utility/TextTransform
 web/IPinfo
 web/Lastfm
