@@ -1,3 +1,6 @@
+authen/Atheme
+authen/Http
+authen/Ldap
 bots/Fishbot
 bots/MegaHAL
 bots/Plumber
