@@ -18,7 +18,7 @@ sub cmd_tell {
     my ( $network, $channel, $origin, $message ) = @_;
     my ( $target, @msg ) = split( ' ', $message );
     my $tell = join( ' ', @msg );
-    push $tells{$network}{$target}, $origin->nick." told me to tell you: $tell";
+    push @{ $tells{$network}{$target} }, $origin->nick." told me to tell you: $tell";
 }
 
 sub handle_message {
