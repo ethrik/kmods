@@ -8,6 +8,8 @@ use strict;
 use warnings;
 use Keldair;
 
+my $timer = Keldair::Timer->new;
+
 $keldair->help_add(TTIMER => 'Tests timers');
 $keldair->syntax_add(TTIMER => 'TTIMER');
 
