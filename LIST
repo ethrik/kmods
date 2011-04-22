@@ -19,3 +19,4 @@ utility/Tell
 utility/TextTransform
 web/IPinfo
 web/Lastfm
+tests/TTimer
