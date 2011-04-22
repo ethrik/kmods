@@ -18,5 +18,8 @@ $keldair->command_bind(
         my ( $network, $chan, $nick, $string ) = @_;
 	$keldair->msg( $network, $chan, "Sending DICKS after 10 seconds.");
 	$timer->after(10, sub { $keldair->msg( $network, $chan, "DICKS");  });
+	$keldair->msg( $network, $chan, "Sending CUM ever 10 seconds for 30 seconds...");
+	my $rtimer = $timer->every(10, sub { $keldair->msg( $network, $chan, "CUM"); });
+	$keldair->after(30, sub { $timer->delete($rtimer); });
     }
 );
