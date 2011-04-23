@@ -10,6 +10,7 @@ package Keldair::Module::Authen::Json;
 
 use base 'Exporter';
 use Keldair;
+use FindBin qw($Bin);
 use Config::JSON;
 use Digest::SHA2;
 
@@ -18,7 +19,14 @@ our @EXPORT = qw( &check );
 my $conf = "$Bin/../etc/accounts.json";
 $conf = $ENV{HOME}."/.keldair/accounts.json" if $Bin eq "/usr/bin";
 
-my $db = Config::JSON->new($conf);
+my $db;
+
+if (-e $conf) {
+    $db = Config::JSON->new($conf);
+}
+else {
+    $db = Config::JSON->create($conf);
+}
 
 $keldair->help_add('REGISTER' => "Register an account");
 $keldair->syntax_add('REGISTER' => "REGISTER <username> <password>");
@@ -26,6 +34,7 @@ $keldair->syntax_add('REGISTER' => "REGISTER <username> <password>");
 $keldair->command_bind('REGISTER' => sub {
         my ($network, $chan, $origin, $msg) = @_;
         my @parv = split(' ', $msg);
+        my ($username, $password);
         if ($#parv == 1) {
             $username = lc $parv[0];
             $password = $parv[1];
@@ -64,7 +73,7 @@ $keldair->command_bind('SETPASS' => sub {
         else {
            my $sha = new Digest::SHA2;
            $sha->add($password);
-           $db->set($origin->account, $password);
+           $db->set($origin->account, $sha->hexdigest);
         }
     }
 );
