@@ -22,3 +22,4 @@ utility/TextTransform
 web/IPinfo
 web/Lastfm
 tests/TTimer
+tests/THooks
