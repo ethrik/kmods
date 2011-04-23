@@ -15,12 +15,12 @@ $keldair->syntax_add(THOOKS => 'THOOKS <test string>');
 $keldair->command_bind(
     THOOKS => sub {
         my ( $network, $chan, $nick, $string ) = @_;
-	    $keldair->hook_run(OnJoin => $network, $nick, $chan);
-        $keldair->hook_run(OnKick => $network, $nick, $chan);
-        $keldair->hook_run(OnJoin => $network, $nick, $chan);
-        $keldair->hook_run(OnPart => $network, $nick, $chan);
-        $keldair->hook_run(OnNotice => $network, $nick, $chan, $string);
-        $keldair->hook_run(OnMessage => $network, $chan, $nick, $string);
+	    $keldair->hook_run(OnJoin => $network, $nick->name, $chan->name);
+        $keldair->hook_run(OnKick => $network, $nick->name, $chan->name);
+        $keldair->hook_run(OnJoin => $network, $nick->name, $chan->name);
+        $keldair->hook_run(OnPart => $network, $nick->name, $chan->name);
+        $keldair->hook_run(OnNotice => $network, $nick->name, $chan->name, $string);
+        $keldair->hook_run(OnMessage => $network, $chan->name, $nick->name, $string);
         $keldair->hook_run(OnRehash);
     }
 );
