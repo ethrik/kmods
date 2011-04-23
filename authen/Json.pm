@@ -24,9 +24,9 @@ $keldair->help_add('REGISTER' => "Register an account");
 $keldair->syntax_add('REGISTER' => "REGISTER <username> <password>");
 
 $keldair->command_bind('REGISTER' => sub {
-        my ( $network, $chan, $origin, $msg) = @_;
+        my ($network, $chan, $origin, $msg) = @_;
         my @parv = split(' ', $msg);
-        if ( $#parv == 1 ) {
+        if ($#parv == 1) {
             $username = lc $parv[0];
             $password = $parv[1];
         }
@@ -34,7 +34,7 @@ $keldair->command_bind('REGISTER' => sub {
             $username = lc $origin->nick;
             $password = $parv[0];
         }
-	if defined($db->get(lc($username))) {
+	if (defined($db->get(lc $username))) {
 	    $keldair->msg($network, $origin, "$username is already registered.");
         }
         else {
@@ -42,6 +42,23 @@ $keldair->command_bind('REGISTER' => sub {
             $sha->add($password);
             $db->set(lc $username, $sha->hexdigest);
             $keldair->msg($network, $origin, "You are now registered as $username.");
+        }
+    }
+);
+
+$keldair->help_add('SETPASS' => "Set a new password");
+$keldair->syntax_add('SETPASS' => "SETPASS <new-password>");
+
+$keldair->command_bind('SETPASS' => sub {
+        my ($network, $chan, $origin, $msg) = @_;
+        my ($password) = split(' ', $msg);
+        if (!$origin->account) {
+            $keldair->msg($network, $origin, "You are not logged in.");
+        }
+        else {
+           my $sha = new Digest::SHA2;
+           $sha->add($password);
+           $db->set($origin->account, $password);
         }
     }
 );
