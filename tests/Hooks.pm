@@ -14,8 +14,10 @@ $keldair->syntax_add(THOOKS => 'THOOKS <test string>');
 
 $keldair->command_bind(
     THOOKS => sub {
-        my ( $network, $chan, $nick, $string ) = @_;
-	    $keldair->hook_run(OnJoin => $network, $nick, $chan);
+        my ( $network, $channel, $origin, $string ) = @_;
+	    my $nick = $origin->nick;
+        my $chan = $channel->name;
+        $keldair->hook_run(OnJoin => $network, $nick, $chan);
         $keldair->hook_run(OnKick => $network, $nick, $chan);
         $keldair->hook_run(OnJoin => $network, $nick, $chan);
         $keldair->hook_run(OnPart => $network, $nick, $chan);
