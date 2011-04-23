@@ -15,7 +15,7 @@ use Authen::Simple::HTTP;
 our @EXPORT = qw( &check );
 
 my $auth = Authen::Simple::HTTP->new( url => $keldair->conf->get('authen/url') )
-    or warn "Authen::Simple::Atheme startup failure: $!" and return;
+    or warn "Authen::Simple::HTTP startup failure: $!" and return;
 
 sub check {
     my ( $username, $password ) = @_;
