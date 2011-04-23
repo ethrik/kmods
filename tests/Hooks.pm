@@ -21,6 +21,6 @@ $keldair->command_bind(
         $keldair->hook_run(OnPart => $network, $nick, $chan);
         $keldair->hook_run(OnNotice => $network, $nick, $chan, $string);
         $keldair->hook_run(OnMessage => $network, $chan, $nick, $string);
-        $keldair->hook_run(OnRehash);
+        $keldair->hook_run('OnRehash');
     }
 );
