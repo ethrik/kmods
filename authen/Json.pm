@@ -37,6 +37,9 @@ $keldair->command_bind('REGISTER' => sub {
 	if (defined($db->get(lc $username))) {
 	    $keldair->msg($network, $origin, "$username is already registered.");
         }
+        elsif(!$password) {
+            $keldair->msg($network, $origin, "Please provide a password");
+        }
         else {
             my $sha = new Digest::SHA2;
             $sha->add($password);
