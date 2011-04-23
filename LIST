@@ -1,5 +1,6 @@
 authen/Atheme
 authen/Http
+authen/Json
 authen/Kerberos
 authen/Ldap
 bots/Fishbot
