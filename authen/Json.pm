@@ -38,7 +38,7 @@ $keldair->command_bind('REGISTER' => sub {
 	    $keldair->msg($network, $origin, "$username is already registered.");
         }
         elsif(!$password) {
-            $keldair->msg($network, $origin, "Please provide a password");
+            $keldair->msg($network, $origin, "Please provide a password.");
         }
         else {
             my $sha = new Digest::SHA2;
@@ -57,6 +57,9 @@ $keldair->command_bind('SETPASS' => sub {
         my ($password) = split(' ', $msg);
         if (!$origin->account) {
             $keldair->msg($network, $origin, "You are not logged in.");
+        }
+        elsif (!$password) {
+            $keldair->msg($network, $origin, "Please provide a password.");
         }
         else {
            my $sha = new Digest::SHA2;
