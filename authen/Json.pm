@@ -16,16 +16,16 @@ use Digest::SHA2;
 
 our @EXPORT = qw( &check );
 
-my $conf = "$Bin/../etc/accounts.json";
-$conf = $ENV{HOME}."/.keldair/accounts.json" if $Bin eq "/usr/bin";
+my $file = "$Bin/../etc/accounts.json";
+$file = $ENV{HOME}."/.keldair/accounts.json" if $Bin eq "/usr/bin";
 
 my $db;
 
 if (-e $conf) {
-    $db = Config::JSON->new($conf);
+    $db = Config::JSON->new($file);
 }
 else {
-    $db = Config::JSON->create($conf);
+    $db = Config::JSON->create($file);
 }
 
 $keldair->help_add('REGISTER' => "Register an account");
