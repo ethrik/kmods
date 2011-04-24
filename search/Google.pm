@@ -18,7 +18,7 @@ sub cmd_google {
     my ( $network, $channel, $origin, $query ) = @_;
     my $search = Google::Search->web($query);
     my $output;
-    for (my $i; $i < 5; $i++) {
+    for (my $i = 0; $i < 5; $i++) {
         my $result = $search->next;
         $output .= $result->rank + 1 .'. '.$result->uri.' ';
     }
