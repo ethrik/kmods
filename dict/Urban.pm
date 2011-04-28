@@ -38,6 +38,7 @@ sub cmd_ud {
         else {
             $keldair->msg($network, $channel, 'No definition found for %s.', $term);
         }
+        $tree->delete;
     }
 }
 
